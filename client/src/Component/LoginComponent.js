@@ -1,15 +1,15 @@
 
 import React from 'react';
 
-class Login extends React.Component {
+class LoginComponent extends React.Component {
     constructor(props){
         super(props)
     }
     render() {
       return (
-          <div>hello</div>
+          <div style={{color:"yellow"}}>hello</div>
       );
     }
   }
 
-export default Login;
+export default LoginComponent;

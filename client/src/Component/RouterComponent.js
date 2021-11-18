@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter,Route,Routes  } from "react-router-dom";
-import Login from "./Login"
+import LoginComponent from "./LoginComponent"
 class RouterComponent extends React.Component {
     constructor(props){
         super(props)
@@ -9,7 +9,7 @@ class RouterComponent extends React.Component {
       return (
           <BrowserRouter>
             <Routes>
-                    <Route exact path="/" element={<Login/>} />
+                    <Route exact path="/" element={<LoginComponent/>} />
             </Routes>
           </BrowserRouter>
       );
