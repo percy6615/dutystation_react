@@ -1,7 +1,11 @@
 import React from 'react';
-
-export default  class mainComponent extends React.Component {
+// import "../css/app.css"
+export default  class MainComponent extends React.Component {
     componentDidMount() {
-        
+
     } 
+    render() {
+
+        return (<div>hello</div>);
+        }
 }

@@ -120,6 +120,10 @@ app.get(['/main'], (req, res) => {
 
 });
 
+app.post(["/main"],isAuthenticated,(req,res)=>{
+    res.status(200).send(`ok`);
+})
+
 app.get(['/mainnew'], (req, res) => {
     // , isAuthenticated
     res.render('mainnew.ejs', {

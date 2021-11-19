@@ -14,7 +14,7 @@ export default class LoginComponent extends React.Component {
       console.log("LoginComponent");
       var remember = function(){
         var checkd = $("#remember").prop("checked");
-        if(checkd == "checked" || checkd){
+        if(checkd === "checked" || checkd){
           var username = $("#username-field").val();
           var password = $("#password-field").val();
           cookies.set("remember",true,{maxAge: 1 * 60 * 24 * 365,});
@@ -39,14 +39,14 @@ export default class LoginComponent extends React.Component {
 
         $(this).toggleClass("fa-eye fa-eye-slash");
         var input = $($(this).attr("toggle"));
-        if (input.attr("type") == "password") {
+        if (input.attr("type") === "password") {
           input.attr("type", "text");
         } else {
           input.attr("type", "password");
         }
       });
 
-      if(cookies.get("remember")=="true"){
+      if(cookies.get("remember")==="true"){
         // $("#remember").prop("checked",true);
         console.log(cookies.get("username"));
         console.log(cookies.get("password"));
