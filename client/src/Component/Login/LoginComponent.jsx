@@ -1,6 +1,7 @@
 
 import React from 'react';
-import "../css/loginstyle.css"
+
+// import  "./loginstyle.css"
 import $ from 'jquery'; 
 
 import Cookies from 'universal-cookie';
@@ -11,6 +12,7 @@ const cookies = new Cookies();
 export default class LoginComponent extends React.Component {
 
     componentDidMount() {
+     
       console.log("LoginComponent");
       var remember = function(){
         var checkd = $("#remember").prop("checked");
@@ -48,8 +50,7 @@ export default class LoginComponent extends React.Component {
 
       if(cookies.get("remember")==="true"){
         // $("#remember").prop("checked",true);
-        console.log(cookies.get("username"));
-        console.log(cookies.get("password"));
+     
         $("#username-field").val(cookies.get("username"));
          $("#password-field").val(cookies.get("password"));
       }else{
@@ -73,8 +74,10 @@ export default class LoginComponent extends React.Component {
     render() {
 
         return (
-
+     
+          
           <div className="img js-fullheight" style={{color:"yellow",backgroundImage: "url(images/bg1.jpg)",opacity:0.9}}>
+            <link rel="stylesheet" href="./css/logincss/css/loginstyle.css" />
             <div className="ftco-section">
               <div className="container">
                   <div className="row justify-content-center">
@@ -120,7 +123,7 @@ export default class LoginComponent extends React.Component {
               </div>
             </div>
           </div>
-
+         
                 
         );
       
