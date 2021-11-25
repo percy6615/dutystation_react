@@ -7,8 +7,10 @@ import {Modal} from 'react-bootstrap';
 export default  class LeftMenuComponent extends React.Component {
     constructor(props){
         super(props)
-        this.state = props.data;
 
+        this.state = {arr:[]};
+     
+        this.test=this.test.bind(this)
     }
     componentDidMount() {
         $(".sidebar-content  .sidebar-nav  .sidebar-item .sidebar-link").on("click", function() {
@@ -45,13 +47,13 @@ export default  class LeftMenuComponent extends React.Component {
         for(var i = 0 ;i < r ;i++){
             arr[i]=i;
         }
-       var t = this.state;
-       t.arr = arr;
-       this.setState(t);
+    //    var t = this.state;
+    //    t.arr = arr;
+       this.setState({"arr":arr});
     }
     
     render() {
-        
+      
         var userData={"imgpath":"images/avatars/avatar.jpg","pname":"黃信愷","sname":"死變態",action:this.test};
         var mapItem = {"active":true,id:"sysmap",dataFeather:"map",itemName:"地圖",action:this.test};
         var chartItem={"active":false,id:"syschart",dataFeather:"pie-chart",itemName:"圖表",action:this.test};
@@ -103,6 +105,10 @@ export default  class LeftMenuComponent extends React.Component {
                             <SidebarctaComponent data={{username:"2"}}/>
                             <SidebarctaComponent data={{username:"3"}}/>
                             <SidebarctaComponent data={{username:"4"}}/>
+                            {this.state.arr.map((i) => (
+                               <SidebarctaComponent key={i} data={{username:i}}/>
+                            ))}
+                             
                         </div>
                 </div>
             </div>

@@ -18,7 +18,7 @@ export default  class MainComponent extends React.Component {
                <link href="css/maincss/css/app.css" rel="stylesheet"/>
                <link href="css/maincss/css/main.css" rel="stylesheet"/>
                
-                <LeftMenuComponent/>
+                <LeftMenuComponent />
                 <div className="main">
                     <main>
                         
