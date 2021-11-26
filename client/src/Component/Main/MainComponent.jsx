@@ -2,6 +2,7 @@ import React from 'react';
 
 import ModalComponent from './ModalComponent';
 import LeftMenuComponent from './LeftMenuComponent';
+import TopMenuComponent from './TopMenuComponent'
 import $ from 'jquery';
 
 export default  class MainComponent extends React.Component {
@@ -20,6 +21,7 @@ export default  class MainComponent extends React.Component {
                
                 <LeftMenuComponent />
                 <div className="main">
+                    <TopMenuComponent/>
                     <main>
                         
                     </main>

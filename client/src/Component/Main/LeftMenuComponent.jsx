@@ -3,12 +3,13 @@ import {Nav} from 'react-bootstrap';
 import SidebarItemComponent from "./LeftComponentSub/SidebarItemComponent";
 import $ from 'jquery';
 import  SidebarctaComponent from "./LeftComponentSub/SidebarctaComponent"
-import {Modal} from 'react-bootstrap';
+import Cookies from 'universal-cookie';
+const cookies = new Cookies();
 export default  class LeftMenuComponent extends React.Component {
     constructor(props){
         super(props)
 
-        this.state = {arr:[]};
+        this.state = {arr:cookies.get("arr")==undefined?[]:cookies.get("arr")};
      
         this.test=this.test.bind(this)
     }
@@ -50,11 +51,14 @@ export default  class LeftMenuComponent extends React.Component {
     //    var t = this.state;
     //    t.arr = arr;
        this.setState({"arr":arr});
+       cookies.set("arr",arr);
     }
+
+
     
     render() {
       
-        var userData={"imgpath":"images/avatars/avatar.jpg","pname":"黃信愷","sname":"死變態",action:this.test};
+        var userData={"imgpath":"images/avatars/avatar.jpg","pname":"黃信愷","sname":"死變態"};
         var mapItem = {"active":true,id:"sysmap",dataFeather:"map",itemName:"地圖",action:this.test};
         var chartItem={"active":false,id:"syschart",dataFeather:"pie-chart",itemName:"圖表",action:this.test};
         var imageItem={"active":false,id:"sysalbum",dataFeather:"image",itemName:"照片集",action:this.test};
@@ -101,10 +105,7 @@ export default  class LeftMenuComponent extends React.Component {
                     </div>
                     <div className="sidebar-cta-content scrollbar-style" id="online-content" style={{"overflow":"auto","margin": "auto","padding": "0em","height": "0px","backgroundColor":"white"}}>
                         <div className="list-group">
-                            <SidebarctaComponent data={{username:"1"}}/>
-                            <SidebarctaComponent data={{username:"2"}}/>
-                            <SidebarctaComponent data={{username:"3"}}/>
-                            <SidebarctaComponent data={{username:"4"}}/>
+                        <SidebarctaComponent  data={{username:1}}/>
                             {this.state.arr.map((i) => (
                                <SidebarctaComponent key={i} data={{username:i}}/>
                             ))}
