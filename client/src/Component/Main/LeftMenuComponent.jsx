@@ -1,5 +1,6 @@
 import React from 'react';
 import {Nav} from 'react-bootstrap';
+
 import SidebarItemComponent from "./LeftComponentSub/SidebarItemComponent";
 import $ from 'jquery';
 import  SidebarctaComponent from "./LeftComponentSub/SidebarctaComponent"
@@ -10,7 +11,7 @@ export default  class LeftMenuComponent extends React.Component {
         super(props)
 
         this.state = {arr:cookies.get("arr")==undefined?[]:cookies.get("arr")};
-     
+
         this.test=this.test.bind(this)
     }
     componentDidMount() {
@@ -36,8 +37,20 @@ export default  class LeftMenuComponent extends React.Component {
                 }, 500);
             }
         });
-
+    
+          // the OPEN button
+          showModal = () => {
+            this.setState({ show: true });
+          };
         
+            // Method to hide modal, activated by handleClose prop on the <Modal>
+          hideModal = () => {
+            this.setState({ 
+                    show: false
+                });
+          };
+        
+    
     
     } 
     test(){
@@ -54,6 +67,10 @@ export default  class LeftMenuComponent extends React.Component {
        cookies.set("arr",arr);
     }
 
+    projectClick(){
+
+    }
+
 
     
     render() {
@@ -64,7 +81,7 @@ export default  class LeftMenuComponent extends React.Component {
         var imageItem={"active":false,id:"sysalbum",dataFeather:"image",itemName:"照片集",action:this.test};
         var setItem={"active":false,"dataTarget":"setui","dataParent":"sidebar",id:"syssetting",dataFeather:"image",action:this.test,itemName:"設定",downitem:[{itemid:"orgmanager",itemName:"組織管理"},{itemid:"permanager",itemName:"員工管理"},{itemid:"jobmanager",itemName:"職位管理"}]};
         var listItem={"active":false,id:"syslist",dataFeather:"book",itemName:"災情管制列表",action:this.test};
-        var projectItem={"active":false,id:"sysproject",dataFeather:"share",itemName:"發佈專案",action:this.test};
+        var projectItem={"active":false,id:"sysproject",dataFeather:"share",itemName:"發佈專案",action:this.projectClick};
 
         return (<Nav id="sidebar" className="sidebar ">
         <div className="sidebar-content js-simplebar">
@@ -116,4 +133,54 @@ export default  class LeftMenuComponent extends React.Component {
         </div>
     </Nav>);
     }
+}
+function createprojectmodal() {
+
+    if ($("#exampleModalScrollable > div").find(".modal-content").length > 0) {
+        $("#exampleModalScrollable > div").empty();
+    }
+    var header = $("<div>", {
+            class: "modal-header"
+        }).append($("<h3>", {
+            class: "modal-title",
+            id: "exampleModalScrollableTitle",
+            text: "發佈專案"
+        }))
+        .append($("<button>", {
+            class: "close",
+            "data-bs-dismiss": "modal",
+            "aria-label": "Close",
+            html: ' <span aria-hidden="true">&times;</span>'
+        }));
+
+    var body = $("<div>", {
+        class: "modal-body"
+    });
+
+    var foot = $("<div>", {
+        class: "modal-footer"
+    }).append($("<button>", {
+        class: "btn btn-secondary",
+        "data-bs-dismiss": "modal",
+        id: "modalreportcancel",
+        text: "關閉",
+    })).append($("<button>", {
+        class: "btn btn-primary",
+        id: "modalreportconfirm",
+        text: "發佈",
+    }));
+
+    var content = $("<div>", {
+        class: "modal-content"
+    }).append(header).append(body).append(foot);
+
+    $("#exampleModalScrollable > div").append(content);
+
+    $("#modalreportcancel").on("click", function(e) {
+        //TODO
+    });
+
+    $("#modalreportconfirm").on("click", function(e) {
+        //TODO
+    });
 }

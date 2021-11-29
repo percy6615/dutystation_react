@@ -22,30 +22,30 @@ export default  class MainComponent extends React.Component {
                 <LeftMenuComponent />
                 <div className="main">
                     <TopMenuComponent/>
-                    <main class="content mainformate">
+                    <main className="content mainformate">
                         
                     </main>
                     <footer>
-                    <div class="container-fluid">
-                    <div class="row text-muted">
-                        <div class="col-6 text-left">
-                            <p class="mb-0">
-                                <a href="/main" class="text-muted"><strong>service</strong></a> &copy;
+                    <div className="container-fluid">
+                    <div className="row text-muted">
+                        <div className="col-6 text-left">
+                            <p className="mb-0">
+                                <a href="/main" className="text-muted"><strong>service</strong></a> &copy;
                             </p>
                         </div>
-                        <div class="col-6 text-right">
-                            <ul class="list-inline">
-                                <li class="list-inline-item">
-                                    <a class="text-muted" href="#">Support</a>
+                        <div className="col-6 text-right">
+                            <ul className="list-inline">
+                                <li className="list-inline-item">
+                                    <a className="text-muted" href="#">Support</a>
                                 </li>
-                                <li class="list-inline-item">
-                                    <a class="text-muted" href="#">Help Center</a>
+                                <li className="list-inline-item">
+                                    <a className="text-muted" href="#">Help Center</a>
                                 </li>
-                                <li class="list-inline-item">
-                                    <a class="text-muted" href="#">Privacy</a>
+                                <li className="list-inline-item">
+                                    <a className="text-muted" href="#">Privacy</a>
                                 </li>
-                                <li class="list-inline-item">
-                                    <a class="text-muted" href="#">Terms</a>
+                                <li className="list-inline-item">
+                                    <a className="text-muted" href="#">Terms</a>
                                 </li>
                             </ul>
                         </div>
