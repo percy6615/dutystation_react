@@ -13,6 +13,7 @@ export default  class LeftMenuComponent extends React.Component {
         this.state = {arr:cookies.get("arr")==undefined?[]:cookies.get("arr")};
 
         this.test=this.test.bind(this)
+        this.mapClick=this.mapClick.bind(this)
     }
     componentDidMount() {
         $(".sidebar-content  .sidebar-nav  .sidebar-item .sidebar-link").on("click", function() {
@@ -38,17 +39,17 @@ export default  class LeftMenuComponent extends React.Component {
             }
         });
     
-          // the OPEN button
-          showModal = () => {
-            this.setState({ show: true });
-          };
+        //   // the OPEN button
+        //   showModal = () => {
+        //     this.setState({ show: true });
+        //   };
         
-            // Method to hide modal, activated by handleClose prop on the <Modal>
-          hideModal = () => {
-            this.setState({ 
-                    show: false
-                });
-          };
+        //     // Method to hide modal, activated by handleClose prop on the <Modal>
+        //   hideModal = () => {
+        //     this.setState({ 
+        //             show: false
+        //         });
+        //   };
         
     
     
@@ -71,12 +72,16 @@ export default  class LeftMenuComponent extends React.Component {
 
     }
 
+    mapClick(){
+        clickMenu(".map");
+    }
+
 
     
     render() {
       
         var userData={"imgpath":"images/avatars/avatar.jpg","pname":"黃信愷","sname":"死變態"};
-        var mapItem = {"active":true,id:"sysmap",dataFeather:"map",itemName:"地圖",action:this.test};
+        var mapItem = {"active":true,id:"sysmap",dataFeather:"map",itemName:"地圖",action:this.mapClick};
         var chartItem={"active":false,id:"syschart",dataFeather:"pie-chart",itemName:"圖表",action:this.test};
         var imageItem={"active":false,id:"sysalbum",dataFeather:"image",itemName:"照片集",action:this.test};
         var setItem={"active":false,"dataTarget":"setui","dataParent":"sidebar",id:"syssetting",dataFeather:"image",action:this.test,itemName:"設定",downitem:[{itemid:"orgmanager",itemName:"組織管理"},{itemid:"permanager",itemName:"員工管理"},{itemid:"jobmanager",itemName:"職位管理"}]};
@@ -134,53 +139,64 @@ export default  class LeftMenuComponent extends React.Component {
     </Nav>);
     }
 }
-function createprojectmodal() {
+// function createprojectmodal() {
 
-    if ($("#exampleModalScrollable > div").find(".modal-content").length > 0) {
-        $("#exampleModalScrollable > div").empty();
+//     if ($("#exampleModalScrollable > div").find(".modal-content").length > 0) {
+//         $("#exampleModalScrollable > div").empty();
+//     }
+//     var header = $("<div>", {
+//             class: "modal-header"
+//         }).append($("<h3>", {
+//             class: "modal-title",
+//             id: "exampleModalScrollableTitle",
+//             text: "發佈專案"
+//         }))
+//         .append($("<button>", {
+//             class: "close",
+//             "data-bs-dismiss": "modal",
+//             "aria-label": "Close",
+//             html: ' <span aria-hidden="true">&times;</span>'
+//         }));
+
+//     var body = $("<div>", {
+//         class: "modal-body"
+//     });
+
+//     var foot = $("<div>", {
+//         class: "modal-footer"
+//     }).append($("<button>", {
+//         class: "btn btn-secondary",
+//         "data-bs-dismiss": "modal",
+//         id: "modalreportcancel",
+//         text: "關閉",
+//     })).append($("<button>", {
+//         class: "btn btn-primary",
+//         id: "modalreportconfirm",
+//         text: "發佈",
+//     }));
+
+//     var content = $("<div>", {
+//         class: "modal-content"
+//     }).append(header).append(body).append(foot);
+
+//     $("#exampleModalScrollable > div").append(content);
+
+//     $("#modalreportcancel").on("click", function(e) {
+//         //TODO
+//     });
+
+//     $("#modalreportconfirm").on("click", function(e) {
+//         //TODO
+//     });
+// }
+
+function clickMenu(type) {
+    if ($(type).is(":hidden")) {
+        $("main > div").css("display", "none");
+        $(type).fadeIn();
+        $(type).fadeIn("slow");
+        $(type).fadeIn("10000");
+        $(type).css("display", "block");
     }
-    var header = $("<div>", {
-            class: "modal-header"
-        }).append($("<h3>", {
-            class: "modal-title",
-            id: "exampleModalScrollableTitle",
-            text: "發佈專案"
-        }))
-        .append($("<button>", {
-            class: "close",
-            "data-bs-dismiss": "modal",
-            "aria-label": "Close",
-            html: ' <span aria-hidden="true">&times;</span>'
-        }));
 
-    var body = $("<div>", {
-        class: "modal-body"
-    });
-
-    var foot = $("<div>", {
-        class: "modal-footer"
-    }).append($("<button>", {
-        class: "btn btn-secondary",
-        "data-bs-dismiss": "modal",
-        id: "modalreportcancel",
-        text: "關閉",
-    })).append($("<button>", {
-        class: "btn btn-primary",
-        id: "modalreportconfirm",
-        text: "發佈",
-    }));
-
-    var content = $("<div>", {
-        class: "modal-content"
-    }).append(header).append(body).append(foot);
-
-    $("#exampleModalScrollable > div").append(content);
-
-    $("#modalreportcancel").on("click", function(e) {
-        //TODO
-    });
-
-    $("#modalreportconfirm").on("click", function(e) {
-        //TODO
-    });
 }

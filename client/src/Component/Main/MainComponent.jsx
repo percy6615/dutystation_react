@@ -1,9 +1,8 @@
 import React from 'react';
 
-import ModalComponent from './ModalComponent';
 import LeftMenuComponent from './LeftMenuComponent';
 import TopMenuComponent from './TopMenuComponent'
-import $ from 'jquery';
+import MapComponent from './MiddleComponentSub/MapComponent'
 
 export default  class MainComponent extends React.Component {
     componentDidMount() {
@@ -23,7 +22,21 @@ export default  class MainComponent extends React.Component {
                 <div className="main">
                     <TopMenuComponent/>
                     <main className="content mainformate">
+                    <div id="map" className="map" style={{"display": "block", position: "relative"}}>
+                            <MapComponent></MapComponent>
+                        </div>
+                        <div id="org" className="org" style={{"display": "none"}}>
                         
+                        </div>
+                        <div id="chart" className="chart " style={{"display": "none"}}>
+                            
+                        </div>
+                        <div id="profile" className="profile " style={{"display": "none"}}>
+                            
+                        </div>
+                        <div id="album" className="album" style={{"display": "none"}}>
+                            
+                        </div>
                     </main>
                     <footer>
                     <div className="container-fluid">
@@ -58,7 +71,7 @@ export default  class MainComponent extends React.Component {
 
                     </div>
                 </div>
-                <ModalComponent data={{modalid:"exampleModalScrollable"}}/>
+               
   
             </div>
             

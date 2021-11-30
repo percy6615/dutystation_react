@@ -1,18 +1,71 @@
 import React from 'react';
-
+import ReactModal from 'react-modal' ;
 
 export default  class ModalComponent extends React.Component {
     constructor(props){
         super(props)
         this.state = props.data;
+        this.confirmHandle = this.confirmHandle.bind(this);
     }
+ 
     componentDidMount() {
 
     } 
+
+    confirmHandle(){
+        this.props.data.closeModal();
+    }
+   
     render() {
-        return ( <div className="modal fade" id={this.state.modalid} tabIndex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-                    <div className="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
-                    </div>
-                </div>);
+    
+        const  customStyles={
+           
+            content: {
+              position: 'absolute',
+              top: '20%',
+              left: '20%',
+              right: '20%',
+              bottom: '20%',
+              border: '1px solid #ccc',
+              background: '#fff',
+              overflow: 'auto',
+              WebkitOverflowScrolling: 'touch',
+              borderRadius: '4px',
+              outline: 'none',
+              padding: '20px'
+            }
+          };
+        return ( 
+           
+           <ReactModal
+					isOpen={this.props.data.showModal}
+					closeModal={this.props.data.closeModal}
+                    style={customStyles}
+					appElement={document.getElementById('root') }
+                    onRequestClose={this.props.data.closeModal}
+                    closeTimeoutMS={100} 
+                    // overlayClassName="promise-modal-overlay"
+				>
+					<img
+						width="100%"
+						style={{ borderRadius: 3 }}
+						src="https://source.unsplash.com/random"
+						alt="unsplash"
+					/>
+
+					<button
+						
+						onClick={this.props.data.closeModal}
+					>
+						關閉
+					</button>
+                    <button
+						
+						onClick={this.confirmHandle}
+					>
+						關閉
+					</button>
+				</ReactModal>
+          );
     }
 }

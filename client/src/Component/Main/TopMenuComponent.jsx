@@ -2,13 +2,41 @@ import React from 'react';
 import { Nav } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFileAlt,faFilter,faToolbox } from '@fortawesome/free-solid-svg-icons'
+import $ from 'jquery'
+import ModalComponent from './ModalComponent'
+
 
 export default  class TopMenuComponent extends React.Component {
-    componentDidMount() {
+    constructor(props){
+        super(props)
+        this.state = {
+            showModal: false
+        };
+        this.openModal = this.openModal.bind(this);
+        this.closeModal = this.closeModal.bind(this);
+    }
 
+   // close modal (set isModalOpen, true)
+	closeModal() {
+		this.setState({
+			showModal: false
+		});
+	}
+
+	// open modal (set isModalOpen, false)
+	openModal() {
+      
+		this.setState({
+			showModal: true
+		});
+	}
+
+
+    componentDidMount() {
+       
     } 
     render() {
-    
+       
         return (<Nav className="navbar navbar-expand navbar-light navbar-bg">
                 <a className="sidebar-toggle d-flex  js-sidebar-toggle">
                     <i className="hamburger align-self-center"></i>
@@ -31,7 +59,7 @@ export default  class TopMenuComponent extends React.Component {
                     <ul className="navbar-nav navbar-align">
                         <li className="nav-item dropdown">
                             <div className="position-relative">
-                                <a className="m-1 btn btn-outline-info dropdown-toggle d-none d-sm-inline-block" id="funct" data-toggle="dropdown" aria-expanded="false">功能</a>
+                                <a className="m-1 btn btn-outline-info  d-none d-sm-inline-block" id="funct" data-toggle="dropdown" aria-expanded="false">功能列表</a>
                                 <a className=" input-group-text d-inline-block d-sm-none" id="funct" style={{"marginRight": "10px"}} data-toggle="dropdown"><FontAwesomeIcon icon={faToolbox}  /></a>
                                 <ul className="dropdown-menu dropdown-menu-left" aria-labelledby="funct">
                                     <li><a className="dropdown-item"  id="disasterreport">災情通報</a></li>
@@ -42,10 +70,10 @@ export default  class TopMenuComponent extends React.Component {
                                 </ul>
                             </div>
                         </li>
-                        <li className="nav-item  ">
+                        <li className="nav-item  "  >
                             <div className="position-relative">
-                                <a className="m-1 btn btn-outline-dark  d-none d-sm-inline-block" id="filterdata">時間區域</a>
-                                <a className="input-group-text  d-inline-block d-sm-none" id="filterdataicon"><FontAwesomeIcon icon={faFilter}  /></a>
+                                <a className="m-1 btn btn-outline-dark  d-none d-sm-inline-block" id="filterdata" onClick={this.openModal}>時間區域</a>
+                                <a className="input-group-text  d-inline-block d-sm-none" id="filterdataicon" onClick={this.openModal}><FontAwesomeIcon icon={faFilter}  /></a>
                             </div>
                         </li>
                         <li className="nav-item">
@@ -76,6 +104,9 @@ export default  class TopMenuComponent extends React.Component {
 
                     </ul>
                 </div>
+                <ModalComponent data={{modalid:"exampleModalScrollable",showModal: this.state.showModal,closeModal:this.closeModal}}/>
+           
         </Nav>);
+        
     }
 }
