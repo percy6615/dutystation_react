@@ -14,9 +14,9 @@ export default  class MiddleComponent extends React.Component {
         console.log(this.props)
         if(this.props.data.num===1){
             return(
-                <div id="map" className="map" >
+               
                             <MapComponent></MapComponent>
-                        </div>
+                       
             )
         }else if(this.props.data.num===2){
             return(

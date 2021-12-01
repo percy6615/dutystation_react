@@ -20,7 +20,7 @@ export default  class MainComponent extends React.Component {
     leftClick(){
 
     }
-    mapCallBackfun(){
+    mapCallBackfun(evt){
     
         this.setState({num:1})
     }
@@ -52,7 +52,10 @@ export default  class MainComponent extends React.Component {
                         <div id="album" className="album" style={{"display": "none"}}>
                             
                         </div> */}
-                        <MiddleComponent data={{num:this.state.num}}></MiddleComponent>
+                       
+                            <MiddleComponent data={{num:this.state.num}}></MiddleComponent>
+                    
+                        
                     </main>
                     <footer>
                     <div className="container-fluid">
