@@ -3,14 +3,29 @@ import React from 'react';
 import LeftMenuComponent from './LeftMenuComponent';
 import TopMenuComponent from './TopMenuComponent'
 import MapComponent from './MiddleComponentSub/MapComponent'
+import ChartComponent from './MiddleComponentSub/ChartComponent';
+import MiddleComponent from './MiddleComponent';
 
 export default  class MainComponent extends React.Component {
+    constructor(props){
+        super(props)
+        this.state={num:0}
+        this.mapCallBackfun = this.mapCallBackfun.bind(this)
+    }
     componentDidMount() {
 
 
     } 
-    render() {
 
+    leftClick(){
+
+    }
+    mapCallBackfun(){
+    
+        this.setState({num:1})
+    }
+    render() {
+        console.log("state"+this.state.num)
         return (
             
             <div className="wrapper" id="whole">
@@ -18,25 +33,26 @@ export default  class MainComponent extends React.Component {
                <link href="css/maincss/css/app.css" rel="stylesheet"/>
                <link href="css/maincss/css/main.css" rel="stylesheet"/>
                
-                <LeftMenuComponent />
+                <LeftMenuComponent data={{mapcallback:this.mapCallBackfun}} />
                 <div className="main">
                     <TopMenuComponent/>
                     <main className="content mainformate">
-                    <div id="map" className="map" style={{"display": "block", position: "relative"}}>
+                    {/* <div id="map" className="map" style={{"display": "block", position: "relative"}}>
                             <MapComponent></MapComponent>
                         </div>
                         <div id="org" className="org" style={{"display": "none"}}>
-                        
+
                         </div>
                         <div id="chart" className="chart " style={{"display": "none"}}>
-                            
+                            <ChartComponent></ChartComponent>
                         </div>
                         <div id="profile" className="profile " style={{"display": "none"}}>
                             
                         </div>
                         <div id="album" className="album" style={{"display": "none"}}>
                             
-                        </div>
+                        </div> */}
+                        <MiddleComponent data={{num:this.state.num}}></MiddleComponent>
                     </main>
                     <footer>
                     <div className="container-fluid">
@@ -47,7 +63,7 @@ export default  class MainComponent extends React.Component {
                             </p>
                         </div>
                         <div className="col-6 text-right">
-                            <ul className="list-inline">
+                            <ul className="list-inline" style={{    marginBottom: 0}}>
                                 <li className="list-inline-item">
                                     <a className="text-muted" href="#">Support</a>
                                 </li>
@@ -71,8 +87,6 @@ export default  class MainComponent extends React.Component {
 
                     </div>
                 </div>
-               
-  
             </div>
             
           );
