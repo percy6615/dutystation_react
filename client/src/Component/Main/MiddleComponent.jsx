@@ -10,15 +10,14 @@ export default  class MiddleComponent extends React.Component {
 
     } 
     render() {
-        console.log("MiddleComponent")
-        console.log(this.props)
-        if(this.props.data.num===1){
+
+        if(this.props.data.id==="sysmap"){
             return(
                
-                            <MapComponent></MapComponent>
+               <MapComponent></MapComponent>
                        
             )
-        }else if(this.props.data.num===2){
+        }else if(this.props.data.id==="syschart"){
             return(
             <div id="chart" className="chart " >
                               <ChartComponent></ChartComponent>

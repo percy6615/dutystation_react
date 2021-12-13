@@ -13,8 +13,8 @@ export default  class LeftMenuComponent extends React.Component {
         this.state = {arr:cookies.get("arr")==undefined?[]:cookies.get("arr")};
         
         this.test=this.test.bind(this)
-        this.mapClick=this.mapClick.bind(this)
-        this.chartClick=this.chartClick.bind(this)
+        this.allocate=this.allocate.bind(this)
+
     }
     componentDidMount() {
         $(".sidebar-content  .sidebar-nav  .sidebar-item .sidebar-link").on("click", function() {
@@ -69,17 +69,8 @@ export default  class LeftMenuComponent extends React.Component {
        cookies.set("arr",arr);
     }
 
-    projectClick(){
-
-    }
-
-    mapClick(){
-        console.log("mapClick");
-        clickMenu(".map");
-    }
-    chartClick(){
-        console.log("chartClick");
-        clickMenu(".chart");
+    allocate(type){
+        this.props.argue(type)
     }
 
 
@@ -87,12 +78,12 @@ export default  class LeftMenuComponent extends React.Component {
     render() {
       
         var userData={"imgpath":"images/avatars/avatar.jpg","pname":"黃信愷","sname":"死變態"};
-        var mapItem = {"active":true,id:"sysmap",dataFeather:"map",itemName:"地圖",action:this.props.data.mapcallback};
-        var chartItem={"active":false,id:"syschart",dataFeather:"pie-chart",itemName:"圖表",action:this.chartcallback};
-        var imageItem={"active":false,id:"sysalbum",dataFeather:"image",itemName:"照片集",action:this.test};
+        var mapItem = {"active":true,id:"sysmap",dataFeather:"map",itemName:"地圖"};
+        var chartItem={"active":false,id:"syschart",dataFeather:"pie-chart",itemName:"圖表"};
+        var imageItem={"active":false,id:"sysalbum",dataFeather:"image",itemName:"照片集"};
         var setItem={"active":false,"dataTarget":"setui","dataParent":"sidebar",id:"syssetting",dataFeather:"image",action:this.test,itemName:"設定",downitem:[{itemid:"orgmanager",itemName:"組織管理"},{itemid:"permanager",itemName:"員工管理"},{itemid:"jobmanager",itemName:"職位管理"}]};
         var listItem={"active":false,id:"syslist",dataFeather:"book",itemName:"災情管制列表",action:this.test};
-        var projectItem={"active":false,id:"sysproject",dataFeather:"share",itemName:"發佈專案",action:this.projectClick};
+        var projectItem={"active":false,id:"sysproject",dataFeather:"share",itemName:"發佈專案"};
 
         return (<Nav id="sidebar" className="sidebar ">
         <div className="sidebar-content js-simplebar">
@@ -116,15 +107,15 @@ export default  class LeftMenuComponent extends React.Component {
                 <li className="sidebar-header">
                     Common
                 </li>
-                <SidebarItemComponent data={mapItem}/>
-                <SidebarItemComponent data={chartItem}/>
-                <SidebarItemComponent data={imageItem}/>
+                <SidebarItemComponent data={mapItem} argue={this.allocate}/>
+                <SidebarItemComponent data={chartItem} argue={this.allocate}/>
+                <SidebarItemComponent data={imageItem} argue={this.allocate}/>
                 <li className="sidebar-header">
                     Administrator
                 </li>
-                <SidebarItemComponent data={setItem}/>
-                <SidebarItemComponent data={listItem}/>
-                <SidebarItemComponent data={projectItem}/>
+                <SidebarItemComponent data={setItem} argue={this.allocate}/>
+                <SidebarItemComponent data={listItem} argue={this.allocate}/>
+                <SidebarItemComponent data={projectItem} argue={this.allocate}/>
             </ul>
 
             <div className="sidebar-cta">

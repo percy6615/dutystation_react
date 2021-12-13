@@ -19,14 +19,14 @@ import {
     }
 
     initial(){
-       
-        if(this.overlay===undefined){
+       console.log("initmap")
+        // if(this.overlay===undefined){
             this.overlay = this.createOverlayer();
-        }
-       if(this.map ===undefined ){
-        console.log("map")
+        // }
+    //    if(this.map ===undefined ){
+            
             this.map = this.createmap(this.overlay);
-       }
+    //    }
      
     }
 

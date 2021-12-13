@@ -9,7 +9,7 @@ import MiddleComponent from './MiddleComponent';
 export default  class MainComponent extends React.Component {
     constructor(props){
         super(props)
-        this.state={num:0}
+        this.state={id:"sysmap"}
         this.mapCallBackfun = this.mapCallBackfun.bind(this)
     }
     componentDidMount() {
@@ -21,11 +21,10 @@ export default  class MainComponent extends React.Component {
 
     }
     mapCallBackfun(evt){
-    
-        this.setState({num:1})
+        this.setState({id:evt})
     }
     render() {
-        console.log("state"+this.state.num)
+       
         return (
             
             <div className="wrapper" id="whole">
@@ -33,7 +32,7 @@ export default  class MainComponent extends React.Component {
                <link href="css/maincss/css/app.css" rel="stylesheet"/>
                <link href="css/maincss/css/main.css" rel="stylesheet"/>
                
-                <LeftMenuComponent data={{mapcallback:this.mapCallBackfun}} />
+                <LeftMenuComponent argue={this.mapCallBackfun} />
                 <div className="main">
                     <TopMenuComponent/>
                     <main className="content mainformate">
@@ -53,7 +52,7 @@ export default  class MainComponent extends React.Component {
                             
                         </div> */}
                        
-                            <MiddleComponent data={{num:this.state.num}}></MiddleComponent>
+                            <MiddleComponent data={{id:this.state.id}}></MiddleComponent>
                     
                         
                     </main>
