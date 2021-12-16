@@ -1,30 +1,31 @@
 import React from 'react';
 import MapComponent from './MiddleComponentSub/MapComponent';
 import ChartComponent from './MiddleComponentSub/ChartComponent';
+import ModalComponent from './ModalComponent'
 export default  class MiddleComponent extends React.Component {
     constructor(props){
         super(props)
-       
+       this.state = {}
     }
     componentDidMount() {
 
     } 
     render() {
 
-        if(this.props.data.id==="sysmap"){
-            return(
+        // if(this.props.data.id==="sysmap"){
+        //     return(
                
-               <MapComponent></MapComponent>
+        //        <MapComponent></MapComponent>
                        
-            )
-        }else if(this.props.data.id==="syschart"){
-            return(
-            <div id="chart" className="chart " >
-                              <ChartComponent></ChartComponent>
-                             </div>)
-        }else{
-            return(<div>middle</div>)
-        }
+        //     )
+        // }else if(this.props.data.id==="syschart"){
+        //     return(
+        //     <div id="chart" className="chart " >
+        //                       <ChartComponent></ChartComponent>
+        //                      </div>)
+        // }else{
+        //     return(<ModalComponent data={{modalid:"exampleModalScrollable",showModal: this.state.showModal,closeModal:this.closeModal}}/>)
+        // }
         // return (<div>
         //      {/* <div id="map" className="map" >
         //                     <MapComponent></MapComponent>
@@ -43,5 +44,18 @@ export default  class MiddleComponent extends React.Component {
         //                 </div> */}
 
         // </div>);
+        var displaymap = "none";
+        var displaychart = "none";
+        if(this.props.data.id==="sysmap"){
+            displaymap = "block"
+        }else if(this.props.data.id==="syschart"){
+            displaychart = "block"
+        }
+        
+        return (<main className="content mainformate">
+                <MapComponent data={{display:displaymap}}/>
+                <ChartComponent data={{display:displaychart}}/>
+                
+        </main>)
     }
 }

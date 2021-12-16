@@ -7,7 +7,7 @@ export default  class MapComponent extends React.Component {
       
     }
     componentDidMount() {
-        console.log("test");
+      
         map.initial();
     } 
 
@@ -27,7 +27,7 @@ export default  class MapComponent extends React.Component {
     }
 
     render() {
-        return ( <div id="map" className="map" style={{"display": "block", position: "relative"}}>
+        return ( <div id="map" className="map" style={{"display": this.props.data.display, position: "relative"}}>
                 <div style={{"borderRadius": "0.5em", backgroundColor: "rgba(150, 179, 193,0.5)", position: "absolute",  zIndex: 99999,bottom:"0px"}}>
                 <label className="toggle-check" style={{marginLeft: "4px",marginRight: "auto",marginTop: "auto",marginBottom: "auto",position: "relative",top: "25%"}}>
                     <span id="lb_satellite">衛照圖</span>
