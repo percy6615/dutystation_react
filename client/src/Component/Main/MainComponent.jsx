@@ -4,6 +4,7 @@ import LeftMenuComponent from './LeftMenuComponent';
 import TopMenuComponent from './TopMenuComponent'
 import MiddleComponent from './MiddleComponent';
 import FootComponent from './FootComponent';
+
 export default  class MainComponent extends React.Component {
     constructor(props){
         super(props)
@@ -15,9 +16,7 @@ export default  class MainComponent extends React.Component {
 
     } 
 
-    leftClick(){
-
-    }
+   
     callBackfun(evt){
         this.setState({id:evt})
     }
@@ -41,6 +40,7 @@ export default  class MainComponent extends React.Component {
 
                     </div>
                 </div>
+                
             </div>
             
           );

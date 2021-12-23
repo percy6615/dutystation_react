@@ -14,7 +14,8 @@ export default  class LeftMenuComponent extends React.Component {
         
         this.test=this.test.bind(this)
         this.allocate=this.allocate.bind(this)
-
+        this.dispatchproject=this.dispatchproject.bind(this)
+        
     }
     componentDidMount() {
         $(".sidebar-content  .sidebar-nav  .sidebar-item .sidebar-link").on("click", function() {
@@ -71,6 +72,10 @@ export default  class LeftMenuComponent extends React.Component {
 
     allocate(type){
         this.props.argue(type)
+    }
+
+    dispatchproject(){
+
     }
 
 

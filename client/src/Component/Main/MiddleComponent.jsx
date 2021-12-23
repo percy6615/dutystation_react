@@ -2,6 +2,7 @@ import React from 'react';
 import MapComponent from './MiddleComponentSub/MapComponent';
 import ChartComponent from './MiddleComponentSub/ChartComponent';
 import ModalComponent from './ModalComponent'
+import BootstrapModalComponent from './BootstrapModalComponent'
 export default  class MiddleComponent extends React.Component {
     constructor(props){
         super(props)
@@ -55,7 +56,7 @@ export default  class MiddleComponent extends React.Component {
         return (<main className="content mainformate">
                 <MapComponent data={{display:displaymap}}/>
                 <ChartComponent data={{display:displaychart}}/>
-                
+                <BootstrapModalComponent/>
         </main>)
     }
 }

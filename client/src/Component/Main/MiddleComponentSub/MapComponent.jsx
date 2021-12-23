@@ -4,11 +4,12 @@ import map from '../../../js/mapcontrol'
 export default  class MapComponent extends React.Component {
     constructor(props){
         super(props)
-      
+     
     }
     componentDidMount() {
       
         map.initial();
+      
     } 
 
 
