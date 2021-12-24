@@ -4,12 +4,15 @@ import ChartComponent from './MiddleComponentSub/ChartComponent';
 import ModalComponent from './ModalComponent'
 import BootstrapModalComponent from './BootstrapModalComponent'
 export default  class MiddleComponent extends React.Component {
+    
     constructor(props){
         super(props)
        this.state = {}
+      
     }
+    
     componentDidMount() {
-
+        
     } 
     render() {
 
@@ -45,18 +48,23 @@ export default  class MiddleComponent extends React.Component {
         //                 </div> */}
 
         // </div>);
+        
         var displaymap = "none";
         var displaychart = "none";
+        var displaymodal = false;
         if(this.props.data.id==="sysmap"){
             displaymap = "block"
         }else if(this.props.data.id==="syschart"){
             displaychart = "block"
+        }else if(this.props.data.id==="sysproject"){
+            displaymodal = true
         }
+        
         
         return (<main className="content mainformate">
                 <MapComponent data={{display:displaymap}}/>
                 <ChartComponent data={{display:displaychart}}/>
-                <BootstrapModalComponent/>
+                <BootstrapModalComponent data={{display:displaymodal}} />
         </main>)
     }
 }
