@@ -8,7 +8,8 @@ export default  class MiddleComponent extends React.Component {
     constructor(props){
         super(props)
        this.state = {}
-      
+       this.displaymap = "none";
+       this.displaychart = "none";
     }
     
     componentDidMount() {
@@ -49,21 +50,22 @@ export default  class MiddleComponent extends React.Component {
 
         // </div>);
         
-        var displaymap = "none";
-        var displaychart = "none";
+
         var displaymodal = false;
         if(this.props.data.id==="sysmap"){
-            displaymap = "block"
+            this.displaymap = "block"
+            this.displaychart = "none";
         }else if(this.props.data.id==="syschart"){
-            displaychart = "block"
+            this.displaymap = "none";
+            this.displaychart = "block"
         }else if(this.props.data.id==="sysproject"){
             displaymodal = true
         }
         
         
         return (<main className="content mainformate">
-                <MapComponent data={{display:displaymap}}/>
-                <ChartComponent data={{display:displaychart}}/>
+                <MapComponent data={{display:this.displaymap}}/>
+                <ChartComponent data={{display:this.displaychart}}/>
                 <BootstrapModalComponent data={{display:displaymodal}} />
         </main>)
     }
